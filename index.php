@@ -48,14 +48,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Hotel</title>
+
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-  <? foreach ($hotels as $hotel) : ?>
-    <?= $hotel["name"] . "<br />" ?>
-    <?= $hotel["description"] . "<br />" ?>
-    <?= $hotel["parking"] . "<br />" ?>
-    <?= $hotel["vote"] . "<br />" ?>
-    <?= $hotel["distance_to_center"] . "<br />" ?>
-  <? endforeach ?> 
+  <div class="container">
+    <h1>Lista di Hotel</h1>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+           <? foreach ($hotels[0] as $hotels_details => $detail) : ?>
+             <th><?= $hotels_details ?></th>
+           <? endforeach ?> 
+        </tr>
+      </thead>
+      <tbody>
+        <? foreach ($hotels as $hotel) : ?>
+          <tr>
+            <td><?= $hotel["name"]?></td>
+            <td><?= $hotel["description"]?></td>
+            <td><? if ($hotel["parking"] == true) {
+                  echo "Disponibile";
+              } else {
+                  echo "Non disponibile";
+              }; ?></td>
+            <td><?= $hotel["vote"]?></td>
+            <td><?= $hotel["distance_to_center"]?></td>
+          </tr>
+        <? endforeach ?>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
