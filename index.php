@@ -74,6 +74,7 @@
         <div>
           <label class="d-block" for="vote">Almeno quante stelle deve avere il tuo hotel?</label>
             <select class="my-2" name="vote" id="vote">
+              <option value="5">Indifferente</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -95,17 +96,19 @@
       <tbody>
         <?php foreach ($hotels as $hotel) : ?>
           <?php if ($hotel["parking"] == $parking_decision || $parking_decision == "") : ?>
-            <tr>
-              <td><?= $hotel["name"]?></td>
-              <td><?= $hotel["description"]?></td>
-              <td><?php if ($hotel["parking"] == true) {
-                    echo "Disponibile";
-                } else {
-                    echo "Non disponibile";
-                }; ?></td>
-              <td><?= $hotel["vote"]?></td>
-              <td><?= $hotel["distance_to_center"]?></td>
-            </tr>
+            <?php if ($hotel["vote"] <= $stars_decision || $stars_decision == "") : ?>
+              <tr>
+                <td><?= $hotel["name"]?></td>
+                <td><?= $hotel["description"]?></td>
+                <td><?php if ($hotel["parking"] == true) {
+                      echo "Disponibile";
+                  } else {
+                      echo "Non disponibile";
+                  }; ?></td>
+                <td><?= $hotel["vote"]?></td>
+                <td><?= $hotel["distance_to_center"]?></td>
+              </tr>
+            <? endif ?>
           <? endif ?>
         <? endforeach ?>
       </tbody>
