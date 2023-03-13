@@ -96,7 +96,7 @@
       <tbody>
         <?php foreach ($hotels as $hotel) : ?>
           <?php if ($hotel["parking"] == $parking_decision || $parking_decision == "") : ?>
-            <?php if ($hotel["vote"] <= $stars_decision || $stars_decision == "") : ?>
+            <?php if ($hotel["vote"] >= $stars_decision || $stars_decision == "") : ?>
               <tr>
                 <td><?= $hotel["name"]?></td>
                 <td><?= $hotel["description"]?></td>
