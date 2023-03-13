@@ -100,11 +100,7 @@
               <tr>
                 <td><?= $hotel["name"]?></td>
                 <td><?= $hotel["description"]?></td>
-                <td><?php if ($hotel["parking"] == true) {
-                      echo "Disponibile";
-                  } else {
-                      echo "Non disponibile";
-                  }; ?></td>
+                <td><?= $hotel["parking"] ? "Disponibile" : "Non disponibile" ?></td>
                 <td><?= $hotel["vote"]?></td>
                 <td><?= $hotel["distance_to_center"]?></td>
               </tr>
